@@ -683,8 +683,8 @@ async function startAutoSearch(){
 }
 
 async function overpassChargers(pos, radius){
-  const q = '[out:json][timeout:25];(node["amenity"="charging_station"](around:' + radius + ',' + pos.lat + ',' + pos.lng + ');way["amenity"="charging_station"](around:' + radius + ',' + pos.lat + ',' + pos.lng + '););out center 60;';
-  const endpoints = ['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+  const q = '[out:json][timeout:30];(node["amenity"="charging_station"](around:' + radius + ',' + pos.lat + ',' + pos.lng + ');way["amenity"="charging_station"](around:' + radius + ',' + pos.lat + ',' + pos.lng + ');relation["amenity"="charging_station"](around:' + radius + ',' + pos.lat + ',' + pos.lng + '););out center 100;';
+  const endpoints = ['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://overpass.openstreetmap.ru/api/interpreter','https://overpass.private.coffee/api/interpreter'];
   let lastErr = null;
   for(const ep of endpoints){
     try {
@@ -752,7 +752,7 @@ function dedupeStations(list){
 
 async function searchStations(pos){
   const status = document.getElementById('gpsText');
-  const radii = [10000, 30000, 60000];
+  const radii = [10000, 30000, 60000, 120000, 250000];
   let anyError = false;
   for(const r of radii){
     status.textContent = '🔌 البحث ضمن ' + (r/1000) + ' كم...';
