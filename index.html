@@ -738,7 +738,6 @@ function browserLocate(opts){
 async function startAutoSearch(){
   const status = document.getElementById('gpsText');
   renderMapsActions(null);
-  setStationHint('⏳ جاري تحديد موقعك والبحث عن البنشات القريبة...');
   status.textContent = '⏳ جاري تحديد الموقع...';
 
   const insecure = (location.protocol === 'file:') || (window.isSecureContext === false);
