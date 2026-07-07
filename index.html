@@ -10,9 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
     <style>
         :root {
-            --royal:      #0d1a6e;
-            --royal-deep: #020b2e;
-            --blue-mid:   #061450;
             --gold:       #c8860a;
             --gold-bright:#ffd700;
             --gold-24:    #ffcc00;
@@ -29,6 +26,11 @@
             --card-border:rgba(255,215,0,0.45);
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        .leaflet-control-attribution a,
+        .leaflet-control-attribution { color: var(--gold-shine) !important; background: rgba(10,10,15,0.75) !important; }
+        .leaflet-control-zoom a { color: var(--gold-shine) !important; background: rgba(10,10,15,0.85) !important; }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgba(10,10,15,0.92) !important; color: var(--gold-shine) !important; }
+        .leaflet-container a { color: var(--gold-shine) !important; }
         html, body { -webkit-tap-highlight-color: transparent; }
         * { -webkit-tap-highlight-color: transparent; }
         a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -392,10 +394,10 @@
         .prayer-cell.active::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, #fff, transparent); border-radius: 2px; }
         .prayer-cell.next-prayer { background: linear-gradient(160deg, #b8730a 0%, #e8a800 50%, #b8730a 100%); box-shadow: 0 0 12px rgba(255,215,0,0.25); }
         .prayer-cell .pc-icon { font-size: 13px; line-height: 1; }
-        .prayer-cell .pc-name { font-family: 'Amiri', serif; font-size: 12px; font-weight: 700; color: #020b2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-        .prayer-cell.active .pc-name { color: #020b2e; font-size: 12px; }
-        .prayer-cell .pc-time { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #020b2e; direction: ltr; letter-spacing: -0.3px; }
-        .prayer-cell.active .pc-time { color: #020b2e; }
+        .prayer-cell .pc-name { font-family: 'Amiri', serif; font-size: 12px; font-weight: 700; color: #0d0d0d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+        .prayer-cell.active .pc-name { color: #0d0d0d; font-size: 12px; }
+        .prayer-cell .pc-time { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; color: #0d0d0d; direction: ltr; letter-spacing: -0.3px; }
+        .prayer-cell.active .pc-time { color: #0d0d0d; }
         .prayer-cell .pc-badge { font-size: 7.5px; color: #ffd700; background: rgba(10,10,15,0.55); border-radius: 3px; padding: 1px 4px; font-family: 'Tajawal', sans-serif; font-weight: 700; line-height: 1.4; }
     </style>
 </head>
@@ -541,7 +543,7 @@
       <div style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05)); border: 1px solid rgba(255,215,0,0.4); border-radius: 8px; padding: 10px; text-align: center; color: var(--gold-shine); font-weight: 700; font-size: 14px; text-shadow: 0 0 8px rgba(255,215,0,0.6); box-shadow: 0 0 15px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.05);">📏 <span id="routeDistance">—</span> كم</div>
       <div style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.05)); border: 1px solid rgba(255,215,0,0.4); border-radius: 8px; padding: 10px; text-align: center; color: var(--gold-shine); font-weight: 700; font-size: 14px; text-shadow: 0 0 8px rgba(255,215,0,0.6); box-shadow: 0 0 15px rgba(255,215,0,0.1), inset 0 0 10px rgba(255,215,0,0.05);">⚡ <span id="chargeRemaining">—</span></div>
     </div>
-    <a id="mapsRouteLink" href="#" target="_blank" rel="noopener" style="display:none; align-items:center; justify-content:center; gap:8px; margin-top:14px; width:100%; padding:13px; border-radius:12px; text-decoration:none; font-family:'Tajawal',sans-serif; font-size:14px; font-weight:900; color:#020b2e; background:linear-gradient(90deg,#b8730a,#ffd700,#ffe566,#ffd700,#b8730a); border:2px solid var(--gold-bright); box-shadow:0 0 30px rgba(255,215,0,0.45), inset 0 0 15px rgba(255,255,255,0.25); text-shadow:0 0 6px rgba(255,255,255,0.4);">🗺️ افتح المسار في خرائط Google</a>
+    <a id="mapsRouteLink" href="#" target="_blank" rel="noopener" style="display:none; align-items:center; justify-content:center; gap:8px; margin-top:14px; width:100%; padding:13px; border-radius:12px; text-decoration:none; font-family:'Tajawal',sans-serif; font-size:14px; font-weight:900; color:#0d0d0d; background:linear-gradient(90deg,#b8730a,#ffd700,#ffe566,#ffd700,#b8730a); border:2px solid var(--gold-bright); box-shadow:0 0 30px rgba(255,215,0,0.45), inset 0 0 15px rgba(255,255,255,0.25); text-shadow:0 0 6px rgba(255,255,255,0.4);">🗺️ افتح المسار في خرائط Google</a>
   </div>
 
   <div id="recBox" style="display: none; border-radius: 16px; padding: 14px 18px; margin-bottom: 20px; backdrop-filter: blur(12px); font-weight: 700; border: 2px solid rgba(39,174,96,0.6); background: linear-gradient(135deg, rgba(39,174,96,0.2), rgba(39,174,96,0.08)); box-shadow: 0 0 30px rgba(39,174,96,0.15), inset 0 0 15px rgba(39,174,96,0.08);">
@@ -553,7 +555,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-let userPos = null, routeA = null, routeB = null, mode = 'auto';
+let userPos = null, routeA = null, routeB = null, mode = 'auto', referencePos = null;
 const ELECTROMAPS_URL = 'https://www.electromaps.com/fr/stations-de-recharge/tunisie';
 
 function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -600,11 +602,20 @@ function initLeafletMap(){
   leafletMapInstance.on('click', (e) => {
     const pos = { lat: e.latlng.lat, lng: e.latlng.lng };
     if(leafletClickMarker){ leafletMapInstance.removeLayer(leafletClickMarker); }
-    leafletClickMarker = L.marker([pos.lat, pos.lng]).addTo(leafletMapInstance)
+    leafletClickMarker = L.marker([pos.lat, pos.lng], {
+      icon: L.divIcon({
+        className: 'gold-pin',
+        html: '<div style="font-size:30px; line-height:1; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));">📍</div>',
+        iconSize: [30,30],
+        iconAnchor: [15,28]
+      })
+    }).addTo(leafletMapInstance)
       .bindPopup('⚡ جاري البحث عن أقرب محطة شحن من هنا...').openPopup();
     document.getElementById('gpsText').textContent = '📍 نقطة مختارة: ' + pos.lat.toFixed(3) + ', ' + pos.lng.toFixed(3);
+    referencePos = pos;
     renderMapsActions(pos);
     searchStations(pos);
+    renderCountryStationList();
   });
 
   setTimeout(() => leafletMapInstance.invalidateSize(), 100);
@@ -685,8 +696,8 @@ function renderCountryStationList(){
   if(!host || !tunisiaStationsCache) return;
 
   const TUNISIA_CENTER = { lat: 34.0, lng: 9.5 };
-  const refPos = userPos || TUNISIA_CENTER;
-  const haveRealPos = !!userPos;
+  const refPos = referencePos || userPos || TUNISIA_CENTER;
+  const haveRealPos = !!referencePos;
 
   const all = tunisiaStationsCache;
   all.forEach(s => { s.dist = haversine(refPos.lat, refPos.lng, s.lat, s.lng); });
@@ -746,7 +757,7 @@ function renderMapsActions(pos){
   if(!host) return;
   const g = gmapsChargersUrl(pos);
   host.innerHTML =
-    '<a href="' + g + '" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:14px; border-radius:12px; margin-bottom:10px; text-decoration:none; ' + "font-family:'Tajawal',sans-serif; " + 'font-size:14px; font-weight:900; color:#020b2e; background:linear-gradient(90deg,#b8730a,#ffd700,#ffe566,#ffd700,#b8730a); border:2px solid var(--gold-bright); box-shadow:0 0 30px rgba(255,215,0,0.45), inset 0 0 15px rgba(255,255,255,0.25); text-shadow:0 0 6px rgba(255,255,255,0.4);">🗺️ ابحث عن البنشات في خرائط Google</a>' +
+    '<a href="' + g + '" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:14px; border-radius:12px; margin-bottom:10px; text-decoration:none; ' + "font-family:'Tajawal',sans-serif; " + 'font-size:14px; font-weight:900; color:#0d0d0d; background:linear-gradient(90deg,#b8730a,#ffd700,#ffe566,#ffd700,#b8730a); border:2px solid var(--gold-bright); box-shadow:0 0 30px rgba(255,215,0,0.45), inset 0 0 15px rgba(255,255,255,0.25); text-shadow:0 0 6px rgba(255,255,255,0.4);">🗺️ ابحث عن البنشات في خرائط Google</a>' +
     '<a href="' + ELECTROMAPS_URL + '" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:11px; border-radius:12px; text-decoration:none; ' + "font-family:'Tajawal',sans-serif; " + 'font-size:13px; font-weight:700; color:var(--gold-bright); background:linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,255,255,0.05)); border:1px solid rgba(255,215,0,0.4); box-shadow:0 0 15px rgba(255,215,0,0.1);">🌍 عرض الخريطة على Electromaps</a>';
 }
 
@@ -812,6 +823,7 @@ async function startAutoSearch(){
   }
 
   userPos = pos;
+  referencePos = pos;
   status.textContent = (precise ? '✅ موقعك: ' : '📍 موقع تقريبي (الشبكة): ') + pos.lat.toFixed(3) + ', ' + pos.lng.toFixed(3) + (insecure ? ' — ⚠️ افتح عبر HTTPS لتحديد دقيق' : '');
   renderMapsActions(userPos);
   searchStations(userPos);
